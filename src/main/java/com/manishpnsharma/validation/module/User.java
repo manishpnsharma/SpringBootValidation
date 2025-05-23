@@ -18,7 +18,7 @@ public class User {
     @NotNull
     @NotBlank(message = "Email is required")
     @Email(message = "Invalid email format")
-    @Size(min = 8, max = 15, message = "Email should be between 8 and 20 characters")
+    //@Size(min = 5, max = 14, message = "Email should be between 5 and 14 characters")
     private String email;
 
     public Long getId() {

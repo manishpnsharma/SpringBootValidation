@@ -9,15 +9,21 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 @Service
+@Transactional
 public class UserService {
     @Autowired
     public UserRepository userRepository;
     public User createUser(User user) {
-        if (user.getEmail().isBlank() || user.getEmail().isEmpty()) {
-            throw new EmptyInputFieldException("232323", "sddadas");
-        }
+       /* if (user.getEmail().isBlank() || user.getEmail().isEmpty()) {
+            throw new EmptyInputFieldException("Invalid data", "Invalid");
+            }*/
         return userRepository.save(user);
     }
+
+    public User updateUser(User user) {
+          return userRepository.save(user);
+    }
+
     @Transactional
     public void deleteUserById(Long id) {
 
@@ -27,6 +33,11 @@ public class UserService {
         Optional.ofNullable(userRepository.findById(id).orElseThrow(
                  () -> new NoSuchElementException("NO User PRESENT WITH ID = " + id)));
         userRepository.deleteById(id);
+    }
+
+
+    public void deleteAllUser() {
+        userRepository.deleteAll();
     }
   /* public Optional<User> getUserById(Long id) throws NoSuchUserExistsException {
         return userRepository.findById(id);
