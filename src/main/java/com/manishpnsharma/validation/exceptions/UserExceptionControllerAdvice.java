@@ -22,7 +22,6 @@ public class UserExceptionControllerAdvice extends ResponseEntityExceptionHandle
     protected ResponseEntity<String> handleEmptyInput(EmptyInputFieldException emptyInputFieldException) {
         return new ResponseEntity<>("Field is empty ", HttpStatus.BAD_REQUEST);
     }*/
-
     @ExceptionHandler(NoSuchUserExistsException.class)
     protected ResponseEntity<String> handleNoSuchUserExistsException(NoSuchUserExistsException emptyInputFieldException) {
         return new ResponseEntity<>("NO USER PRESENT WITH ID", HttpStatus.NOT_FOUND);
@@ -43,11 +42,10 @@ public class UserExceptionControllerAdvice extends ResponseEntityExceptionHandle
                 .stream().map(FieldError::getDefaultMessage).collect(Collectors.toList());
         return new ResponseEntity<>(getErrorsMap(errors), new HttpHeaders(), HttpStatus.BAD_REQUEST);
     }
-
     private Map<String, List<String>> getErrorsMap(List<String> errors) {
         Map<String, List<String>> errorResponse = new HashMap<>();
         errorResponse.put("errors", errors);
         return errorResponse;
     }*/
-   //NoResourceFoundException
+    //NoResourceFoundException
 }

@@ -9,12 +9,10 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     @NotNull
     @NotBlank(message = "Name is required")
     @Size(min = 3, max = 20, message = "Name should be between 3 and 20 characters")
     private String name;
-
     @NotNull
     @NotBlank(message = "Email is required")
     @Email(message = "Invalid email format")
