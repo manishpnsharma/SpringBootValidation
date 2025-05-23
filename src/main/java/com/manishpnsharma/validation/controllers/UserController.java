@@ -1,17 +1,19 @@
 package com.manishpnsharma.validation.controllers;
-
 import com.manishpnsharma.validation.exceptions.NoSuchUserExistsException;
-import com.manishpnsharma.validation.exceptions.ResourceNotFoundException;
 import com.manishpnsharma.validation.module.User;
 import com.manishpnsharma.validation.services.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.ErrorResponse;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping("/v1/api/users")
@@ -40,7 +42,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
+    public ResponseEntity<User> createUser( @RequestBody @Validated User user) {
         User createdUser = userService.createUser(user);
         return new ResponseEntity<User>(createdUser, HttpStatus.CREATED);
     }
@@ -62,8 +64,18 @@ public class UserController {
         return ResponseEntity.ok(userUpdate);
 
     }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<Map<String, String>> handleValidationExceptions(MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getFieldErrors().forEach(error ->
+                errors.put(error.getField(), error.getDefaultMessage()));
+        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+    }
    /*@ExceptionHandler(ResponseStatusException.class)
     public ResponseEntity<String> handleNotFoundException(ResponseStatusException ex) {
         return new ResponseEntity<>(ex.getReason(), ex.getStatusCode());
     }*/
+
+
 }
