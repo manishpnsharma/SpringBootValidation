@@ -1,9 +1,8 @@
-package com.manishpnsharma.curd.controllers;
+package com.manishpnsharma.validation.controllers;
 
-import com.manishpnsharma.curd.exceptions.NoSuchUserExistsException;
-import com.manishpnsharma.curd.exceptions.ResourceNotFoundException;
-import com.manishpnsharma.curd.module.User;
-import com.manishpnsharma.curd.services.UserService;
+import com.manishpnsharma.validation.exceptions.NoSuchUserExistsException;
+import com.manishpnsharma.validation.module.User;
+import com.manishpnsharma.validation.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

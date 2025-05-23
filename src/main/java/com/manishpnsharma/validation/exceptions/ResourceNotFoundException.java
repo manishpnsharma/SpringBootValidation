@@ -1,4 +1,4 @@
-package com.manishpnsharma.curd.exceptions;
+package com.manishpnsharma.validation.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

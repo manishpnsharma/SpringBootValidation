@@ -1,4 +1,4 @@
-package com.manishpnsharma.curd.exceptions;
+package com.manishpnsharma.validation.exceptions;
 
 import java.io.Serial;
 

@@ -1,4 +1,4 @@
-package com.manishpnsharma.curd.exceptions;
+package com.manishpnsharma.validation.exceptions;
 public class ExceptionResponse {
     public String getErrorMessage() {
         return errorMessage;

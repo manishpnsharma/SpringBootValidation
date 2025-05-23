@@ -1,5 +1,5 @@
-package com.manishpnsharma.curd.repositories;
-import com.manishpnsharma.curd.module.User;
+package com.manishpnsharma.validation.repositories;
+import com.manishpnsharma.validation.module.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.List;

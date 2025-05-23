@@ -1,10 +1,10 @@
-package com.manishpnsharma.curd;
+package com.manishpnsharma.validation;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CurdOperationApplicationTests {
+class SpringValidationApplicationTests {
 
 	@Test
 	void contextLoads() {
