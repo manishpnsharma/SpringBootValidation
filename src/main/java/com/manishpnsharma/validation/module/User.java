@@ -1,10 +1,8 @@
 package com.manishpnsharma.validation.module;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -17,6 +15,10 @@ public class User {
     @Size(min = 3, max = 20, message = "Name should be between 3 and 20 characters")
     private String name;
 
+    @NotNull
+    @NotBlank(message = "Email is required")
+    @Email(message = "Invalid email format")
+    @Size(min = 8, max = 15, message = "Email should be between 8 and 20 characters")
     private String email;
 
     public Long getId() {
